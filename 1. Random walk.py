@@ -7,6 +7,8 @@ Created on Mon Apr 22 12:51:50 2024
 """
 
 # =============================================================================
+# """Generating and plotting trajectories"""
+# 
 # import numpy as np
 # import matplotlib.pyplot as plt
 # 
@@ -17,9 +19,7 @@ Created on Mon Apr 22 12:51:50 2024
 # y_step = 2 * (rng.random(num_steps) > .5) - 1
 # x_position = np.cumsum(x_step)
 # y_position = np.cumsum(y_step)
-# =============================================================================
-
-# =============================================================================
+# 
 # # plot random walk trajectory
 # plt.figure()
 # plt.plot(x_position, y_position)
@@ -28,11 +28,8 @@ Created on Mon Apr 22 12:51:50 2024
 # plt.axis('equal')
 # plt.title('2D Random Walk')
 # plt.show()
-# =============================================================================
-
-# =============================================================================
-# '''Plot four random walk trajectories'''
 # 
+# # plot four such trajectories
 # plt.figure()
 # plt.subplot(2,2,1)
 # x_step = 2 * (rng.random(num_steps) > .5) - 1
@@ -76,17 +73,17 @@ Created on Mon Apr 22 12:51:50 2024
 # plt.show
 # =============================================================================
 
-'''Plot the dispacement distribution'''
+"""Plot the dispacement distribution"""
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 # creating empty arrays
-x_final = np.zeros(100)
-y_final = np.zeros(100)
-displacement = np.zeros(100)
+x_final = np.empty(1000)
+y_final = np.empty(1000)
+displacement = np.empty(1000)
 
-for i in range(100):
+for i in range(1000):
     rng = np.random.default_rng()
     num_steps = 1000
     x_step = 2 * (rng.random(num_steps) > .5) - 1
@@ -102,36 +99,54 @@ for i in range(100):
 # plot the end points
 plt.figure()
 plt.scatter(x_final, y_final)
-plt.xlim(-100,100)
-plt.ylim(-100,100)
+plt.axis('square')
 plt.title('End Point Plot')
 plt.show()
 
 # histogram of the displacement values
 plt.figure()
-plt.hist(displacement)
-plt.title('Displacement')
+plt.hist(displacement, bins=50)
+plt.title('Displacement Histogram')
 plt.show()
 
 # histogram of displacement squared
 plt.figure()
-plt.hist(displacement**2)
-plt.title('Displacement Squared')
+plt.hist(displacement**2, bins=50)
+plt.title('Displacement Squared Histogram')
 plt.show()
 
 # test for exponential or power law relationships
 plt.figure()
 plt.hist(displacement**2, bins=50)
 plt.semilogy()
-plt.title('semilogy')
+plt.title('Semilogy Plot')
 plt.show()
 
 plt.figure()
 plt.hist(displacement**2, bins=50)
 plt.loglog()
-plt.title('loglog')
+plt.title('Loglog plot')
 plt.show()
 
+# find the average value of displacement**2
 print(np.mean(displacement**2))
-    
 
+# find the mean-square desplacement of a 4000-step walk
+x_final = np.empty(1000)
+y_final = np.empty(1000)
+displacement = np.empty(1000)
+
+for i in range(1000):
+    rng = np.random.default_rng()
+    num_steps = 4000
+    x_step = 2 * (rng.random(num_steps) > .5) - 1
+    y_step = 2 * (rng.random(num_steps) > .5) - 1
+    x_position = np.cumsum(x_step)
+    y_position = np.cumsum(y_step)
+    x = x_position
+    y = y_position
+    x_final[i] = x[-1]
+    y_final[i] = y[-1]
+    displacement[i] = np.sqrt(x[-1]**2 + y[-1]**2)
+
+print(np.mean(displacement**2))

@@ -6,72 +6,71 @@ Created on Mon Apr 22 12:51:50 2024
 @author: brettnakao
 """
 
-# =============================================================================
-# """Generating and plotting trajectories"""
-# 
-# import numpy as np
-# import matplotlib.pyplot as plt
-# 
-# rng = np.random.default_rng()
-# 
-# num_steps = 1000    # set the size of the array
-# x_step = 2 * (rng.random(num_steps) > .5) - 1
-# y_step = 2 * (rng.random(num_steps) > .5) - 1
-# x_position = np.cumsum(x_step)
-# y_position = np.cumsum(y_step)
-# 
-# # plot random walk trajectory
-# plt.figure()
-# plt.plot(x_position, y_position)
-# plt.xlabel('x-position')
-# plt.ylabel('y-position')
-# plt.axis('equal')
-# plt.title('2D Random Walk')
-# plt.show()
-# 
-# # plot four such trajectories
-# plt.figure()
-# plt.subplot(2,2,1)
-# x_step = 2 * (rng.random(num_steps) > .5) - 1
-# y_step = 2 * (rng.random(num_steps) > .5) - 1
-# x_position = np.cumsum(x_step)
-# y_position = np.cumsum(y_step)
-# plt.xlim(-60, 60)
-# plt.ylim(-60, 60)
-# plt.plot(x_position, y_position)
-# 
-# plt.subplot(2,2,2)
-# x_step = 2 * (rng.random(num_steps) > .5) - 1
-# y_step = 2 * (rng.random(num_steps) > .5) - 1
-# x_position = np.cumsum(x_step)
-# y_position = np.cumsum(y_step)
-# plt.xlim(-60, 60)
-# plt.ylim(-60, 60)
-# plt.plot(x_position, y_position)
-# 
-# plt.subplot(2,2,3)
-# x_step = 2 * (rng.random(num_steps) > .5) - 1
-# y_step = 2 * (rng.random(num_steps) > .5) - 1
-# x_position = np.cumsum(x_step)
-# y_position = np.cumsum(y_step)
-# plt.xlim(-60, 60)
-# plt.ylim(-60, 60)
-# plt.plot(x_position, y_position)
-# 
-# 
-# plt.subplot(2,2,4)
-# x_step = 2 * (rng.random(num_steps) > .5) - 1
-# y_step = 2 * (rng.random(num_steps) > .5) - 1
-# x_position = np.cumsum(x_step)
-# y_position = np.cumsum(y_step)
-# plt.xlim(-60, 60)
-# plt.ylim(-60, 60)
-# plt.plot(x_position, y_position)
-# 
-# # organize and show plot
-# plt.tight_layout()
-# plt.show
-# =============================================================================
+"""Generating and plotting trajectories"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng()
+
+num_steps = 1000    # set the size of the array
+x_step = 2 * (rng.random(num_steps) > .5) - 1
+y_step = 2 * (rng.random(num_steps) > .5) - 1
+x_position = np.cumsum(x_step)
+y_position = np.cumsum(y_step)
+
+# plot random walk trajectory
+plt.figure()
+plt.plot(x_position, y_position)
+plt.xlabel('x-position')
+plt.ylabel('y-position')
+plt.axis('equal')
+plt.title('2D Random Walk')
+plt.show()
+
+# plot four such trajectories
+plt.figure()
+plt.subplot(2,2,1)
+x_step = 2 * (rng.random(num_steps) > .5) - 1
+y_step = 2 * (rng.random(num_steps) > .5) - 1
+x_position = np.cumsum(x_step)
+y_position = np.cumsum(y_step)
+plt.xlim(-60, 60)
+plt.ylim(-60, 60)
+plt.plot(x_position, y_position)
+
+plt.subplot(2,2,2)
+x_step = 2 * (rng.random(num_steps) > .5) - 1
+y_step = 2 * (rng.random(num_steps) > .5) - 1
+x_position = np.cumsum(x_step)
+y_position = np.cumsum(y_step)
+plt.xlim(-60, 60)
+plt.ylim(-60, 60)
+plt.plot(x_position, y_position)
+
+plt.subplot(2,2,3)
+x_step = 2 * (rng.random(num_steps) > .5) - 1
+y_step = 2 * (rng.random(num_steps) > .5) - 1
+x_position = np.cumsum(x_step)
+y_position = np.cumsum(y_step)
+plt.xlim(-60, 60)
+plt.ylim(-60, 60)
+plt.plot(x_position, y_position)
+
+
+plt.subplot(2,2,4)
+x_step = 2 * (rng.random(num_steps) > .5) - 1
+y_step = 2 * (rng.random(num_steps) > .5) - 1
+x_position = np.cumsum(x_step)
+y_position = np.cumsum(y_step)
+plt.xlim(-60, 60)
+plt.ylim(-60, 60)
+plt.plot(x_position, y_position)
+
+# organize and show plot
+plt.tight_layout()
+plt.show
+
 
 """Plot the dispacement distribution"""
 
@@ -129,7 +128,7 @@ plt.title('Loglog plot')
 plt.show()
 
 # find the average value of displacement**2
-print(np.mean(displacement**2))
+print(f"Average displacement^2 for 1000-step walk: {np.mean(displacement**2): .2f}")
 
 # find the mean-square desplacement of a 4000-step walk
 x_final = np.empty(1000)
@@ -149,4 +148,4 @@ for i in range(1000):
     y_final[i] = y[-1]
     displacement[i] = np.sqrt(x[-1]**2 + y[-1]**2)
 
-print(np.mean(displacement**2))
+print(f"Average displacement^2 for 4000-step walk: {np.mean(displacement**2): .2f}")

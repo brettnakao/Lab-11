@@ -1,1 +1,1 @@
-# Lab-11## Random walk* Generate and plot trajectories* Plot the displacement distribution## Rare events* The Poison distribution* Waiting times
+# Lab-11## Random walk* Generate and plot trajectories* Plot the displacement distribution* Find the average value of displacement^2 for 1000-step and 4000-step walks## Rare events* The Poison distribution* Waiting times* Find the averagte waiting time btw heads for 1000000 coin flips
